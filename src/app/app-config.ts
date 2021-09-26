@@ -16,9 +16,9 @@ import { CoreConfig } from '@core/types';
 // prettier-ignore
 export const coreConfig: CoreConfig = {
   app: {
-    appName     : 'Vuexy',                                        // App Name
-    appTitle    : 'Vuexy - Angular 12+ Bootstrap Admin Template', // App Title
-    appLogoImage: 'assets/images/logo/logo.svg',                  // App Logo
+    appName     : 'KarmSolar',                                        // App Name
+    appTitle    : '', // App Title
+    appLogoImage: 'assets/images/logo/karmsolar.png',                  // App Logo
     appLanguage : 'en',                                           // App Default Language (en, fr, de, pt etc..)
   },
   layout: {
@@ -38,15 +38,15 @@ export const coreConfig: CoreConfig = {
       backgroundColor      : ''               // BS color i.e bg-primary, bg-success
     },
     footer: {
-      hidden               : false,           // Boolean: true, false
+      hidden               : true,           // Boolean: true, false
       type                 : 'footer-static', // footer-static, footer-sticky, d-none
       background           : 'footer-light',  // footer-light. footer-dark
       customBackgroundColor: false,           // Boolean: true, false
       backgroundColor      : ''               // BS color i.e bg-primary, bg-success
     },
     enableLocalStorage: true,
-    customizer  : true,                       // Boolean: true, false (Enable theme customizer)
+    customizer  : false,                       // Boolean: true, false (Enable theme customizer)
     scrollTop   : true,                       // Boolean: true, false (Enable scroll to top button)
-    buyNow      : true                        // Boolean: true, false (Set false in real project, For demo purpose only)
+    buyNow      : false                        // Boolean: true, false (Set false in real project, For demo purpose only)
   }
 }
