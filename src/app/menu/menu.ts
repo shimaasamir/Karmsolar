@@ -18,7 +18,53 @@ export const menu: CoreMenu[] = [
   },
   
  
- 
+  {
+        id: 'charts-maps',
+        type: 'section',
+        title: 'Charts & Maps',
+        translate: 'MENU.CM.SECTION',
+        icon: 'bar-chart-2',
+        children: [
+          {
+            id: 'charts',
+            title: 'Charts',
+            translate: 'MENU.CM.CHARTS.COLLAPSIBLE',
+            type: 'collapsible',
+            icon: 'pie-chart',
+            badge: {
+              title: '2',
+              translate: 'MENU.CM.CHARTS.BADGE',
+              classes: 'badge-light-danger badge-pill'
+            },
+            children: [
+              {
+                id: 'apex',
+                title: 'Apex',
+                translate: 'MENU.CM.CHARTS.APEX',
+                type: 'item',
+                icon: 'circle',
+                url: 'charts-and-maps/apex'
+              },
+              {
+                id: 'chartJs',
+                title: 'ChartJS',
+                translate: 'MENU.CM.CHARTS.CHARTJS',
+                type: 'item',
+                icon: 'circle',
+                url: 'charts-and-maps/chartjs'
+              }
+            ]
+          },
+          {
+            id: 'google-maps',
+            title: 'Google Maps',
+            translate: 'MENU.CM.MAPS',
+            icon: 'map',
+            type: 'item',
+            url: 'charts-and-maps/google-maps'
+          }
+        ]
+      },
 
  
 ];

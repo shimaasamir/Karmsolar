@@ -2,7 +2,7 @@
   <div class="content-body">
     <div class="row match-height" *ngIf="isAdmin || isClient">
       <!-- Medal Card -->
-      <div class="col-xl-4 col-md-6 col-12">
+      <!-- <div class="col-xl-4 col-md-6 col-12">
         <div class="card card-congratulation-medal">
           <div class="card-body">
             <h5>{{ 'SAMPLE.CONGRATULATIONS' | translate }} 🎉 {{ currentUser?.firstName }}!</h5>
@@ -14,11 +14,11 @@
             <img src="assets/images/illustration/badge.svg" class="congratulation-medal" alt="Medal Pic" />
           </div>
         </div>
-      </div>
+      </div> -->
       <!--/ Medal Card -->
 
       <!-- Statistics Card -->
-      <div class="col-xl-8 col-md-6 col-12">
+      <div class="col-xl-12 col-12">
         <div class="card card-statistics">
           <div class="card-header">
             <h4 class="card-title">Statistics</h4>
@@ -28,7 +28,7 @@
           </div>
           <div class="card-body statistics-body">
             <div class="row">
-              <div class="col-sm-6 col-xl-3 mb-2 mb-xl-0">
+              <div class="col-sm-6 col-xl-2 mb-2 mb-xl-0">
                 <div class="media">
                   <div class="avatar bg-light-primary mr-2">
                     <div class="avatar-content">
@@ -41,7 +41,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 col-xl-3 mb-2 mb-xl-0">
+              <div class="col-sm-6 col-xl-2 mb-2 mb-xl-0">
                 <div class="media">
                   <div class="avatar bg-light-info mr-2">
                     <div class="avatar-content">
@@ -54,7 +54,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 col-xl-3 mb-2 mb-sm-0">
+              <div class="col-sm-6 col-xl-2 mb-2 mb-sm-0">
                 <div class="media">
                   <div class="avatar bg-light-danger mr-2">
                     <div class="avatar-content">
@@ -67,7 +67,33 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 col-xl-3">
+              <div class="col-sm-6 col-xl-2 mb-2 mb-sm-0">
+                <div class="media">
+                  <div class="avatar bg-light-danger mr-2">
+                    <div class="avatar-content">
+                      <i data-feather="box" class="avatar-icon"></i>
+                    </div>
+                  </div>
+                  <div class="media-body my-auto">
+                    <h4 class="font-weight-bolder mb-0">{{ data.statistics.analyticsData.products }}</h4>
+                    <p class="card-text font-small-3 mb-0">Products</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-2 mb-2 mb-sm-0">
+                <div class="media">
+                  <div class="avatar bg-light-danger mr-2">
+                    <div class="avatar-content">
+                      <i data-feather="box" class="avatar-icon"></i>
+                    </div>
+                  </div>
+                  <div class="media-body my-auto">
+                    <h4 class="font-weight-bolder mb-0">{{ data.statistics.analyticsData.products }}</h4>
+                    <p class="card-text font-small-3 mb-0">Products</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-2">
                 <div class="media">
                   <div class="avatar bg-light-success mr-2">
                     <div class="avatar-content">
@@ -91,41 +117,34 @@
       <div class="col-lg-4 col-12">
         <div class="row match-height">
           <!-- Bar Chart Orders -->
-          <div class="col-lg-6 col-md-3 col-6">
+          <div class="col-lg-12 col-md-6 col-6">
             <div class="card">
               <div class="card-body pb-50">
-                <h6>Orders</h6>
-                <h2 class="font-weight-bolder mb-1">{{ data.ordersChart.analyticsData.orders }}</h2>
-                <div id="statistics-bar-chart" #statisticsBarChartRef>
-                  <!-- Apexchart component-->
-                  <apx-chart
-                    [series]="data.ordersChart.series"
-                    [chart]="{
-                      height: 70,
-                      width: isMenuToggled === false ? statisticsBarChartRef.offsetWidth : statisticsBar.chart.width,
-                      type: 'bar',
-                      stacked: true,
-                      toolbar: {
-                        show: false
-                      }
-                    }"
-                    [tooltip]="statisticsBar.tooltip"
-                    [colors]="statisticsBar.colors"
-                    [dataLabels]="statisticsBar.dataLabels"
-                    [grid]="statisticsBar.grid"
-                    [plotOptions]="statisticsBar.plotOptions"
-                    [dataLabels]="statisticsBar.dataLabels"
-                    [xaxis]="statisticsBar.xaxis"
-                    [yaxis]="statisticsBar.yaxis"
-                  ></apx-chart>
-                </div>
+                <h6>Current PV Power</h6>
+                <!-- <h2 class="font-weight-bolder mb-1">{{ data.ordersChart.analyticsData.orders }}</h2> -->
+                <!-- <div id="statisticsBarChart" [chart]="chart"></div> -->
+                <!-- <highcharts-chart 
+                [Highcharts]="Highcharts"
+                [options]="chartOptions"
+              
+                style="width: 100%; height: 150px; display: block;"
+              ></highcharts-chart> -->
+                <!-- <div id="statistics-bar-chart">
+                  
+                </div> -->
+                <ngb-progressbar
+                showValue="true"
+                type="primary"
+                [height]="progressbarHeight"
+                [value]="60"
+              ></ngb-progressbar>
               </div>
             </div>
           </div>
           <!--/ Bar Chart Orders -->
 
           <!-- Line Chart Profit -->
-          <div class="col-lg-6 col-md-3 col-6">
+          <!-- <div class="col-lg-6 col-md-3 col-6">
             <div class="card card-tiny-line-stats">
               <div class="card-body pb-50">
                 <h6>Profit</h6>
@@ -155,7 +174,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!--/ Line Chart Profit -->
 
           <!-- Earnings Chart -->
@@ -163,39 +182,29 @@
             <div class="card earnings-card">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-6">
-                    <h4 class="card-title mb-1">Earnings</h4>
-                    <div class="font-small-2">This Month</div>
-                    <h5 class="mb-1">$4055.56</h5>
-                    <p class="card-text text-muted font-small-2">
-                      <span class="font-weight-bolder">68.2%</span><span> more earnings than last month.</span>
-                    </p>
-                  </div>
-                  <div class="col-6">
-                    <div id="earnings-donut-chart" #earningChartRef>
-                      <!-- Apexchart component-->
-                      <apx-chart
-                        [chart]="{
-                          type: 'donut',
-                          width:
-                            isMenuToggled === false ? earningChartRef.offsetWidth : earningChartoptions.chart.width,
-                          height: 120,
-                          toolbar: {
-                            show: false
-                          }
-                        }"
-                        [dataLabels]="earningChartoptions.dataLabels"
-                        [series]="earningChartoptions.series"
-                        [legend]="earningChartoptions.legend"
-                        [labels]="earningChartoptions.labels"
-                        [stroke]="earningChartoptions.stroke"
-                        [colors]="earningChartoptions.colors"
-                        [grid]="earningChartoptions.grid"
-                        [plotOptions]="earningChartoptions.plotOptions"
-                      ></apx-chart>
-                      <!-- / Apexchart component-->
+                  <div class="col-12">
+                    <h4 class="card-title mb-1">Performance Ratio</h4>
+                    <div class="progress-wrapper mb-2">
+                      <div class="font-medium-1">Last day</div>
+                      <ngb-progressbar
+                        showValue="true"
+                        type="success"
+                        [height]="progressbarHeight"
+                        [value]="40"
+                      ></ngb-progressbar>
+                    </div>
+                    
+                    <div class="progress-wrapper">
+                      <div class="font-medium-1">Last month</div>
+                      <ngb-progressbar
+                        showValue="true"
+                        type="success"
+                        [height]="progressbarHeight"
+                        [value]="80"
+                      ></ngb-progressbar>
                     </div>
                   </div>
+                 
                 </div>
               </div>
             </div>
@@ -204,93 +213,67 @@
         </div>
       </div>
       <div class="col-lg-8 col-12">
-        <!-- Revenue Report Card -->
-        <div class="card card-revenue-budget">
-          <div class="row mx-0">
-            <div class="col-md-8 col-12 revenue-report-wrapper">
-              <div class="d-sm-flex justify-content-between align-items-center mb-3">
-                <h4 class="card-title mb-50 mb-sm-0">Revenue Report</h4>
-                <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center mr-2">
-                    <span class="bullet bullet-primary font-small-3 mr-50 cursor-pointer"></span>
-                    <span>Earning</span>
-                  </div>
-                  <div class="d-flex align-items-center ml-75">
-                    <span class="bullet bullet-warning font-small-3 mr-50 cursor-pointer"></span>
-                    <span>Expense</span>
-                  </div>
-                </div>
+          <!-- Apex Scatter Charts -->
+    <section id="apex-scatter-charts">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div
+              class="card-header d-flex flex-md-row flex-column justify-content-md-between justify-content-start align-items-md-center align-items-start"
+            >
+              <div>
+                <h4 class="card-title mb-50">New Technologies Data</h4>
               </div>
-              <div id="revenue-report-chart" #revenueReportChartRef>
-                <apx-chart
-                  [series]="data.revenueReport.earningExpenseChart.series"
-                  [chart]="{
-                    height: 230,
-                    width:
-                      isMenuToggled === false
-                        ? revenueReportChartRef.offsetWidth
-                        : revenueReportChartoptions.chart.width,
-                    stacked: true,
-                    type: 'bar',
-                    toolbar: { show: false }
-                  }"
-                  [plotOptions]="revenueReportChartoptions.plotOptions"
-                  [colors]="revenueReportChartoptions.colors"
-                  [dataLabels]="revenueReportChartoptions.dataLabels"
-                  [legend]="revenueReportChartoptions.legend"
-                  [grid]="revenueReportChartoptions.grid"
-                  [xaxis]="revenueReportChartoptions.xaxis"
-                  [yaxis]="revenueReportChartoptions.yaxis"
-                ></apx-chart>
+              <div
+                class="btn-group btn-group-toggle mt-md-0 mt-1"
+                ngbRadioGroup
+                name="radioBasic"
+                [(ngModel)]="radioModel"
+              >
+                <label class="btn btn-outline-primary" ngbButtonLabel rippleEffect>
+                  <input type="radio" name="radio_options" id="radio_option1" [value]="1" ngbButton />
+                  <span>Daily</span>
+                </label>
+                <label class="btn btn-outline-primary" ngbButtonLabel rippleEffect>
+                  <input type="radio" name="radio_options" id="radio_option2" ngbButton [value]="2" />
+                  <span>Monthly</span>
+                </label>
+                <label class="btn btn-outline-primary" ngbButtonLabel rippleEffect>
+                  <input type="radio" name="radio_options" id="radio_option3" ngbButton [value]="3" />
+                  <span>Yearly</span>
+                </label>
               </div>
             </div>
-            <div class="col-md-4 col-12 budget-wrapper">
-              <div class="btn-group">
-                <div ngbDropdown>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ngbDropdownToggle
-                    rippleEffect
-                  >
-                    2020
-                  </button>
-                  <div ngbDropdownMenu>
-                    <a ngbDropdownItem href="javascript:void(0);">2020</a>
-                    <a ngbDropdownItem href="javascript:void(0);">2019</a>
-                    <a ngbDropdownItem href="javascript:void(0);">2018</a>
-                  </div>
-                </div>
-              </div>
-              <h2 class="mb-25">{{ data.revenueReport.analyticsData.currentBudget }}</h2>
-              <div class="d-flex justify-content-center">
-                <span class="font-weight-bolder mr-25">Budget:</span>
-                <span>{{ data.revenueReport.analyticsData.totalBudget }}</span>
-              </div>
-              <div id="budget-chart" #budgetChartRef>
+            <div class="card-body">
+              <div id="scatter-chart" #apexScatterChartRef>
                 <apx-chart
-                  [series]="data.revenueReport.budgetChart.series"
+                  [series]="apexScatterChart.series"
                   [chart]="{
-                    height: 80,
-                    width: isMenuToggled === false ? budgetChartRef.offsetWidth : budgetChartoptions.chart.width,
-                    toolbar: { show: false },
-                    zoom: { enabled: false },
-                    type: 'line',
-                    sparkline: { enabled: true }
+                    height: 400,
+                    width: isMenuToggled === false ? apexScatterChartRef.offsetWidth : apexScatterChart.chart.width,
+                    type: 'scatter',
+                    zoom: {
+                      enabled: true,
+                      type: 'xy'
+                    },
+                    toolbar: {
+                      show: false
+                    }
                   }"
-                  [stroke]="budgetChartoptions.stroke"
-                  [colors]="budgetChartoptions.colors"
-                  [tooltip]="budgetChartoptions.tooltip"
-                ></apx-chart>
+                  [xaxis]="apexScatterChart.xaxis"
+                  [yaxis]="apexScatterChart.yaxis"
+                  [colors]="apexScatterChart.colors"
+                  [legend]="apexScatterChart.legend"
+                  [grid]="apexScatterChart.grid"
+                >
+                </apx-chart>
               </div>
-              <button type="button" class="btn btn-primary" rippleEffect>Increase Budget</button>
             </div>
           </div>
         </div>
-        <!--/ Revenue Report Card -->
+      </div>
+    </section>
+    <!--/ Apex Scatter Charts -->
       </div>
     </div>
 

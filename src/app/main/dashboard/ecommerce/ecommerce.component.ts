@@ -3,6 +3,25 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CoreConfigService } from '@core/services/config.service';
 import { CoreTranslationService } from '@core/services/translation.service';
 
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexStroke,
+  ApexDataLabels,
+  ApexXAxis,
+  ApexGrid,
+  ApexTitleSubtitle,
+  ApexTooltip,
+  ApexPlotOptions,
+  ApexYAxis,
+  ApexFill,
+  ApexMarkers,
+  ApexTheme,
+  ApexNonAxisChartSeries,
+  ApexLegend,
+  ApexResponsive,
+  ApexStates
+} from 'ng-apexcharts';
 import { User } from 'app/auth/models';
 import { colors } from 'app/colors.const';
 import { AuthenticationService } from 'app/auth/service';
@@ -12,6 +31,49 @@ import { locale as english } from 'app/main/dashboard/i18n/en';
 import { locale as french } from 'app/main/dashboard/i18n/fr';
 import { locale as german } from 'app/main/dashboard/i18n/de';
 import { locale as portuguese } from 'app/main/dashboard/i18n/pt';
+
+import * as Highcharts from 'highcharts';
+
+
+
+// interface ChartOptions
+export interface ChartOptions {
+  series?: ApexAxisChartSeries;
+  chart?: ApexChart;
+  xaxis?: ApexXAxis;
+  dataLabels?: ApexDataLabels;
+  grid?: ApexGrid;
+  stroke?: ApexStroke;
+  legend?: ApexLegend;
+  title?: ApexTitleSubtitle;
+  colors?: string[];
+  tooltip?: ApexTooltip;
+  plotOptions?: ApexPlotOptions;
+  yaxis?: ApexYAxis;
+  fill?: ApexFill;
+  labels?: string[];
+  markers: ApexMarkers;
+  theme: ApexTheme;
+}
+
+export interface ChartOptions2 {
+  // Apex-non-axis-chart-series
+  series?: ApexNonAxisChartSeries;
+  chart?: ApexChart;
+  stroke?: ApexStroke;
+  tooltip?: ApexTooltip;
+  dataLabels?: ApexDataLabels;
+  fill?: ApexFill;
+  colors?: string[];
+  legend?: ApexLegend;
+  labels?: any;
+  plotOptions?: ApexPlotOptions;
+  responsive?: ApexResponsive[];
+  markers?: ApexMarkers[];
+  xaxis?: ApexXAxis;
+  yaxis?: ApexYAxis;
+  states?: ApexStates;
+}
 
 @Component({
   selector: 'app-ecommerce',
@@ -32,7 +94,16 @@ export class EcommerceComponent implements OnInit {
   @ViewChild('stateInfoChartRef') stateInfoChartRef: any;
   @ViewChild('stateDangerChartRef') stateDangerChartRef: any;
   @ViewChild('goalChartRef') goalChartRef: any;
-
+  @ViewChild('apexLineAreaChartRef') apexLineAreaChartRef: any;
+  @ViewChild('apexColumnChartRef') apexColumnChartRef: any;
+  @ViewChild('apexScatterChartRef') apexScatterChartRef: any;
+  @ViewChild('apexLineChartRef') apexLineChartRef: any;
+  @ViewChild('apexBarChartRef') apexBarChartRef: any;
+  @ViewChild('apexHeatmapChartRef') apexHeatmapChartRef: any;
+  @ViewChild('apexDonutChartRef') apexDonutChartRef: any;
+  @ViewChild('apexCandlestickChartRef') apexCandlestickChartRef: any;
+  @ViewChild('apexRadarChartRef') apexRadarChartRef: any;
+  @ViewChild('apexRadialChartRef') apexRadialChartRef: any;
   // Public
   public data: any;
   public currentUser: User;
@@ -50,7 +121,8 @@ export class EcommerceComponent implements OnInit {
   public stateDangerChartoptions;
   public earningChartoptions;
   public isMenuToggled = false;
-
+  public progressbarHeight = '1.5rem';
+   
   // Private
   private $barColor = '#f3f3f3';
   private $trackBgColor = '#EBEBEB';
@@ -61,7 +133,38 @@ export class EcommerceComponent implements OnInit {
   private $strokeColor = '#ebe9f1';
   private $earningsStrokeColor2 = '#28c76f66';
   private $earningsStrokeColor3 = '#28c76f33';
+  public apexScatterChart: Partial<ChartOptions>;
+   
+   
 
+  
+   // Color Variables
+   chartColors = {
+     column: {
+       series1: '#826af9',
+       series2: '#d2b0ff',
+       bg: '#f8d3ff'
+     },
+     success: {
+       shade_100: '#7eefc7',
+       shade_200: '#06774f'
+     },
+     donut: {
+       series1: '#ffe700',
+       series2: '#00d4bd',
+       series3: '#826bf8',
+       series4: '#2b9bf4',
+       series5: '#FFA1A1'
+     },
+     area: {
+       series3: '#a4f8cd',
+       series2: '#60f2ca',
+       series1: '#2bdac7'
+     }
+   };
+ 
+ 
+  
   /**
    * Constructor
    * @param {AuthenticationService} _authenticationService
@@ -669,6 +772,98 @@ export class EcommerceComponent implements OnInit {
         }
       ]
     };
+
+     // Apex Scatter Chart
+     this.apexScatterChart = {
+      series: [
+        {
+          name: 'Angular',
+          data: [
+            [5.4, 170],
+            [5.4, 100],
+            [6.3, 170],
+            [5.7, 140],
+            [5.9, 130],
+            [7.0, 150],
+            [8.0, 120],
+            [9.0, 170],
+            [10.0, 190],
+            [11.0, 220],
+            [12.0, 170],
+            [13.0, 230]
+          ]
+        },
+        {
+          name: 'Vue',
+          data: [
+            [14.0, 220],
+            [15.0, 280],
+            [16.0, 230],
+            [18.0, 320],
+            [17.5, 280],
+            [19.0, 250],
+            [20.0, 350],
+            [20.5, 320],
+            [20.0, 320],
+            [19.0, 280],
+            [17.0, 280],
+            [22.0, 300],
+            [18.0, 120]
+          ]
+        },
+        {
+          name: 'React',
+          data: [
+            [14.0, 290],
+            [13.0, 190],
+            [20.0, 220],
+            [21.0, 350],
+            [21.5, 290],
+            [22.0, 220],
+            [23.0, 140],
+            [19.0, 400],
+            [20.0, 200],
+            [22.0, 90],
+            [20.0, 120]
+          ]
+        }
+      ],
+      chart: {
+        height: 400,
+        type: 'scatter',
+        zoom: {
+          enabled: true,
+          type: 'xy'
+        },
+        toolbar: {
+          show: false
+        }
+      },
+      grid: {
+        xaxis: {
+          lines: {
+            show: true
+          }
+        }
+      },
+      legend: {
+        show: true,
+        position: 'top',
+        horizontalAlign: 'left'
+      },
+      colors: [colors.solid.warning, colors.solid.primary, colors.solid.success],
+      xaxis: {
+        tickAmount: 10,
+        labels: {
+          formatter: function (val) {
+            return parseFloat(val).toFixed(1);
+          }
+        }
+      },
+      yaxis: {
+        tickAmount: 7
+      }
+    };
   }
 
   // Lifecycle Hooks
@@ -685,6 +880,8 @@ export class EcommerceComponent implements OnInit {
     this._dashboardService.onApiDataChanged.subscribe(response => {
       this.data = response;
     });
+  
+    
   }
 
   /**
@@ -708,9 +905,14 @@ export class EcommerceComponent implements OnInit {
             this.revenueReportChartoptions.chart.width = this.revenueReportChartRef?.nativeElement.offsetWidth;
             this.budgetChartoptions.chart.width = this.budgetChartRef?.nativeElement.offsetWidth;
             this.goalChartoptions.chart.width = this.goalChartRef?.nativeElement.offsetWidth;
+            this.apexScatterChart.chart.width = this.apexScatterChartRef?.nativeElement.offsetWidth;
           }
         }, 500);
       }
     });
+
+    
   }
+
+  
 }

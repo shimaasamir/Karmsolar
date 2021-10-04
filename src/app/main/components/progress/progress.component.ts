@@ -9,7 +9,7 @@ import * as snippet from 'app/main/components/progress/progress.snippetcode';
 export class ProgressComponent implements OnInit {
   // public
   public contentHeader: object;
-  public progressbarHeight = '.857rem';
+  public progressbarHeight = '2rem';
 
   // snippet code variables
   public _snippetCodeBasicProgress = snippet.snippetCodeBasicProgress;
